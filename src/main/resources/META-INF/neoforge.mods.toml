@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+issueTrackerURL = "https://github.com/Stalemated/disable_lightning_render/issues"
+license="MIT"
+
+[[mods]]
+modId="disable_lightning_render"
+version="${version}"
+displayName="${name}"
+description='''Client-side mod to disable lightning rendering.'''
+authors="Stalemated"
+logoFile = "assets/icon.png"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/disable_lightning_render"
+
+[[mixins]]
+config="disable_lightning_render.mixins.json"
+
+[[dependencies.disable_lightning_render]]
+modId="neoforge"
+type="required"
+versionRange="${neoforge_compat}"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.disable_lightning_render]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft}"
+ordering="NONE"
+side="CLIENT"

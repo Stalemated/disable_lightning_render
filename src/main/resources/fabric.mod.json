@@ -3,26 +3,26 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Client-side mod to disable lightning rendering.",
   "authors": [
-    "Me!"
+    "Stalemated"
   ],
   "contact": {
-    "homepage": "https://stonecutter.kikugie.dev/",
-    "sources": "https://codeberg.org/stonecutter/template-fabric"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/disable_lightning_render",
+    "sources": "https://github.com/Stalemated/disable_lightning_render",
+    "issues": "https://github.com/Stalemated/disable_lightning_render/issues"
   },
-  "license": "CC0-1.0",
-  "icon": "assets/template/icon.png",
-  "environment": "*",
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "environment": "client",
   "entrypoints": {
-    "main": [
-      "com.example.TemplateMod"
+    "client": [
+      "com.stalemated.dlr.DisableLightningRender"
     ]
   },
   "mixins": [
-    "template.mixins.json"
+    "disable_lightning_render.mixins.json"
   ],
-  "accessWidener": "template.ct",
   "depends": {
     "fabricloader": ">=${loader}",
     "minecraft": "${minecraft}"

@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[${forge_min},)"
+issueTrackerURL = "https://github.com/Stalemated/disable_lightning_render/issues"
+license="MIT"
+
+[[mods]]
+modId="disable_lightning_render"
+version="${version}"
+displayName="${name}"
+description='''Client-side mod to disable lightning rendering.'''
+authors="Stalemated"
+logoFile = "assets/icon.png"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/disable_lightning_render"
+
+[[mixins]]
+config="disable_lightning_render.mixins.json"
+
+[[dependencies.disable_lightning_render]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_min},)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.disable_lightning_render]]
+modId="minecraft"
+mandatory=true
+versionRange="${minecraft}"
+ordering="NONE"
+side="CLIENT"
