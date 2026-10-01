@@ -1,5 +1,6 @@
 package com.stalemated.dlr;
 
+import com.stalemated.dlr.config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ implements ClientModInitializer
     //? if forge || neoforge {
     /*public DisableLightningRender() {
         LOGGER.info("Disable Lightning Render initialized.");
+        ConfigManager.get();
     }
     *///?}
 
@@ -30,6 +32,7 @@ implements ClientModInitializer
     @Override
     public void onInitializeClient() {
         LOGGER.info("Disable Lightning Render initialized.");
+        ConfigManager.get();
     }
     //?}
 }
