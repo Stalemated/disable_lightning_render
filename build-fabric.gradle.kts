@@ -91,7 +91,7 @@ tasks {
         val mixinJava = "JAVA_${requiredJava.majorVersion}"
         filesMatching("*.mixins.json") { expand("java" to mixinJava) }
 
-        exclude("META-INF/mods.toml", "META-INF/neoforge.mods.toml")
+        exclude("META-INF/mods.toml", "META-INF/neoforge.mods.toml", "pack.mcmeta")
     }
 
     withType<Jar> {
