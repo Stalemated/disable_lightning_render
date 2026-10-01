@@ -1,35 +1,55 @@
 # See https://stonecutter.kikugie.dev/wiki/config/properties#centralized-properties
-mod.id = "template"
-mod.name = "Template"
-mod.group = "com.example"
-mod.version = "0.1.0"
+mod.id = "disable_lightning_render"
+mod.name = "Disable Lightning Render"
+mod.group = "com.stalemated.dlr"
+mod.version = "1.0.0"
 
 deps.fabric_loader = "0.19.5"
-loomx.loom_version = "1.18-SNAPSHOT"
+deps.fabric_loader_min = "0.15.0"
+loomx.loom_version = "1.17-SNAPSHOT"
+
+["1.20.1"]
+mod.mc_compat = ">=1.20 <=1.20.1"
+mod.mc_releases = ["1.20", "1.20.1"]
+deps.fabric_loader_min = "0.15.0"
+deps.forge_version = "47.3.0"
+deps.forge_compat = "[1.20, 1.20.5)"
+deps.forge_min = "47"
+
+["1.20.4"]
+mod.mc_compat = ">=1.20.2 <=1.20.4"
+mod.mc_releases = ["1.20.2", "1.20.3", "1.20.4"]
+deps.fabric_loader_min = "0.15.0"
+
+["1.20.6"]
+mod.mc_compat = ">=1.20.5 <=1.20.6"
+mod.mc_releases = ["1.20.5", "1.20.6"]
+deps.fabric_loader_min = "0.15.11"
 
 ["1.21.1"]
-# Mod compatibility range in fabric.mod.json
 mod.mc_compat = ">=1.21 <=1.21.1"
-# List of releases to be marked compatible on Modrinth/Curseforge
 mod.mc_releases = ["1.21", "1.21.1"]
+deps.fabric_loader_min = "0.16.0"
+deps.neoforge_version = "21.1.65"
+deps.neoforge_compat = "[21.1,)"
 
-deps.fabric_api = "0.116.17+1.21.1"
+["1.21.3"]
+mod.mc_compat = ">=1.21.2 <=1.21.3"
+mod.mc_releases = ["1.21.2", "1.21.3"]
+deps.fabric_loader_min = "0.16.0"
+deps.neoforge_version = "21.3.11-beta"
+deps.neoforge_compat = "[21.3,)"
 
 ["1.21.11"]
-mod.mc_compat = "1.21.11"
-mod.mc_releases = ["1.21.11"]
-
-deps.fabric_api = "0.141.6+1.21.11"
-
-["26.2"]
-mod.mc_compat = "~26.2"
-mod.mc_releases = ["26.2"]
-
-deps.fabric_api = "0.161.0+26.2"
+mod.mc_compat = ">=1.21.4 <=1.21.11"
+mod.mc_releases = ["1.21.4", "1.21.11"]
+deps.fabric_loader_min = "0.16.0"
+deps.neoforge_version = "21.11.45"
+deps.neoforge_compat = "[21.4,)"
 
 ["26.3"]
-mod.mc_compat = "~26.3"
-mod.mc_releases = ["26.3"]
-
-deps.fabric_api = "0.161.0+26.3"
-
+mod.mc_compat = ">=26.1 <=26.4"
+mod.mc_releases = ["26.1", "26.2", "26.3"]
+deps.fabric_loader_min = "0.19.0"
+deps.neoforge_version = "26.3.0.39-beta"
+deps.neoforge_compat = "[26.3,)"
