@@ -1,30 +1,40 @@
-modLoader="javafml"
-loaderVersion="[${forge_min},)"
-issueTrackerURL = "https://github.com/Stalemated/disable_lightning_render/issues"
-license="MIT"
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "${sources}/issues"
+license = "MIT"
 
 [[mods]]
-modId="disable_lightning_render"
-version="${version}"
-displayName="${name}"
-description='''Client-side mod to disable lightning rendering.'''
-authors="Stalemated"
-logoFile = "assets/icon.png"
-displayURL = "https://www.curseforge.com/minecraft/mc-mods/disable_lightning_render"
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+authors = "${author}"
+description = '''
+${description}
+'''
+logoFile = "assets/${id}/icon.png"
+displayURL = "${sources}"
+displayTest = "IGNORE_ALL_VERSION"
 
 [[mixins]]
-config="disable_lightning_render.mixins.json"
+config = "${id}.mixins.json"
 
-[[dependencies.disable_lightning_render]]
-modId="forge"
-mandatory=true
-versionRange="[${forge_min},)"
-ordering="NONE"
-side="CLIENT"
+[[dependencies.${id}]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.disable_lightning_render]]
-modId="minecraft"
-mandatory=true
-versionRange="${minecraft}"
-ordering="NONE"
-side="CLIENT"
+[[dependencies.${id}]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "s_lib"
+mandatory = false
+versionRange = "[0,)"
+ordering = "AFTER"
+side = "CLIENT"

@@ -4,16 +4,16 @@ plugins {
 
 stonecutter active "1.20.1-fabric"
 
-// See https://stonecutter.kikugie.dev/wiki/config/params
 stonecutter parameters {
-    swaps["mod_version"] = "\"${property("mod.version")}\";"
-    swaps["minecraft"] = "\"${node.metadata.version}\";"
-    constants["release"] = property("mod.id") != "template"
+    val (version, loader) = current.project.split('-', limit = 2)
 
-    val loader = node.project.name.substringAfter('-')
-    constants["fabric"] = loader == "fabric"
-    constants["forge"] = loader == "forge"
-    constants["neoforge"] = loader == "neoforge"
+    properties {
+        tags(version, loader)
+    }
+
+    constants {
+        match(loader, "fabric", "neoforge", "forge")
+    }
 
     replacements {
         string(current.parsed >= "1.21.11") {

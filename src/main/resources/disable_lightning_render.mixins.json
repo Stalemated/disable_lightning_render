@@ -1,12 +1,12 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.stalemated.dlr.mixin",
-  "compatibilityLevel": "${java}",
-  "client": [
-    "LightningBoltMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+    "required": true,
+    "package": "com.stalemated.dlr.mixin",
+    "compatibilityLevel": "${mixin_compatibility}",
+    "minVersion": "0.8",
+    "client": [
+        "LightningBoltMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
 }

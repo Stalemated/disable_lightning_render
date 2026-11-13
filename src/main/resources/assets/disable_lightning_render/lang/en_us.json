@@ -1,0 +1,6 @@
+{
+    "disable_lightning_render.config.title": "Disable Lightning Render",
+    "disable_lightning_render.category.general": "General",
+    "disable_lightning_render.option.hide_lightning": "Hide Lightning",
+    "disable_lightning_render.option.hide_lightning.desc": "Stops lightning bolts from being rendered. The bolt still strikes and still makes its sound."
+}
