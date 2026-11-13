@@ -23,7 +23,7 @@ publish.curseforge_id = "1802027"
 publish.type = "stable"
 publish.requires = []
 publish.optional = ["s-lib", "yacl"]
-publish.nodes = ["1.20.1-fabric", "1.20.1-forge", "1.20.4-neoforge", "1.20.6-neoforge", "26.1-fabric", "26.1-neoforge"]
+publish.nodes = ["1.20.1-fabric", "1.20.1-forge", "1.20.4-neoforge", "1.20.6-neoforge", "26.1-fabric", "26.2-neoforge"]
 
 
 ["1.20.1"]
@@ -66,8 +66,8 @@ deps.fabric_api = "0.100.8+1.20.6"
 deps.modmenu = "10.0.0"
 
 [neoforge."1.20.6"]
-mod.mc_releases = ["1.20.5", "1.20.6", "1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11"]
-mod.mc_compat = "[1.20.5, 1.21.11]"
+mod.mc_releases = ["1.20.5", "1.20.6", "1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11", "26.1"]
+mod.mc_compat = "[1.20.5, 26.2)"
 deps.neo_loader = "20.6.141"
 
 
@@ -177,8 +177,7 @@ deps.fabric_api = "0.144.3+26.1"
 deps.modmenu = "18.0.2"
 
 [neoforge."26.1"]
-mod.mc_releases = ["26.1", "26.2", "26.3"]
-mod.mc_compat = "[26.1, 26.4)"
+mod.mc_compat = "[26.1, 26.2)"
 deps.neo_loader = "26.1.0.19-beta"
 
 
@@ -192,7 +191,8 @@ deps.fabric_api = "0.161.0+26.2"
 deps.modmenu = "20.0.3"
 
 [neoforge."26.2"]
-mod.mc_compat = "[26.2, 26.3)"
+mod.mc_releases = ["26.2", "26.3"]
+mod.mc_compat = "[26.2, 26.4)"
 deps.neo_loader = "26.2.0.88"
 
 

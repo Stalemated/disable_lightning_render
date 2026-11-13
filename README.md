@@ -18,13 +18,14 @@ If [S-Lib](https://github.com/Stalemated/s-lib) 4.0.0 or newer is installed, you
 
 Each file covers a range of Minecraft versions, and its name ends with that range (for example `1.0.0+1.20-1.21.11`). Find your Minecraft version on the left; the cell under your loader is the file to download.
 
-| Minecraft        | Fabric       | Forge       | NeoForge       |
-|------------------|--------------|-------------|----------------|
-| 1.20 - 1.20.1    | 1.20-1.21.11 | 1.20-1.20.1 |                |
-| 1.20.2 - 1.20.3  | 1.20-1.21.11 |             |                |
-| 1.20.4           | 1.20-1.21.11 |             | 1.20.4         |
-| 1.20.5 - 1.21.11 | 1.20-1.21.11 |             | 1.20.5-1.21.11 |
-| 26.1 - 26.3      | 26.1-26.3    |             | 26.1-26.3      |
+| Minecraft        | Fabric       | Forge       | NeoForge    |
+|------------------|--------------|-------------|-------------|
+| 1.20 - 1.20.1    | 1.20-1.21.11 | 1.20-1.20.1 |             |
+| 1.20.2 - 1.20.3  | 1.20-1.21.11 |             |             |
+| 1.20.4           | 1.20-1.21.11 |             | 1.20.4      |
+| 1.20.5 - 1.21.11 | 1.20-1.21.11 |             | 1.20.5-26.1 |
+| 26.1             | 26.1-26.3    |             | 1.20.5-26.1 |
+| 26.2 - 26.3      | 26.1-26.3    |             | 26.2-26.3   |
 
 ## Building
 
