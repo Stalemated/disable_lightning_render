@@ -1,25 +1,52 @@
-# Stonecutter Fabric template
-## Setup
-1. Review the supported Minecraft versions in `settings.gradle.kts`.
-   For new entries, add `versions/.../gradle.properties` with the same keys as other versions.
-2. Change `mod.group`, `mod.id` and `mod.name` properties in `gradle.properties`.
-3. Rename `com.example` package in `src/main/java`.
-4. Rename `src/main/resources/template.mixins.json` to use your mod's id.
-5. Review the `LICENSE` file. 
-   See the [license decision diagram](https://docs.codeberg.org/getting-started/licensing/#license-decision-diagram) for common options.
-6. Review `src/main/resources/fabric.mod.json` to have up-to-date properties.
+# Disable Lightning Render
 
-## Usage
-- Use `"Set active project to ..."` Gradle tasks to update the Minecraft version
-  available in `src/` classes.
-- Use `buildAndCollect` Gradle task to store mod releases in `build/libs/`.
-- Enable `mod-publish-plugin` in `stonecutter.gradle.kts` and `build.gradle.kts`
-  and the corresponding code blocks to publish releases to Modrinth and Curseforge.
-- Enable `maven-publish` in `build.gradle.kts` and the corresponding code block
-  to publish releases to a personal maven repository.
+A small client-side mod that stops lightning bolts from being rendered. The bolt still strikes, sets fires, makes its sound, and the sky still flashes, it's just that don't see the bolt itself.
 
-## Useful links
-- [Stonecutter beginner's guide](https://stonecutter.kikugie.dev/wiki/start/): *spoiler: you* ***need*** *to understand how it works!*
-- [Fabric Discord server](https://discord.gg/v6v4pMv): for mod development help.
-- [Stonecutter Discord server](https://discord.kikugie.dev/): for Stonecutter and Gradle help.
-- [How To Ask Questions - the guide](http://www.catb.org/esr/faqs/smart-questions.html): also in [video form](https://www.youtube.com/results?search_query=How+To+Ask+Questions+The+Smart+Way).
+Works on any server.
+
+## Settings
+
+Disable Lightning Render works on its own, with no dependencies. Out of the box, lightning is always hidden.
+
+If [S-Lib](https://github.com/Stalemated/s-lib) 4.0.0 or newer is installed, you also get a setting to turn the mod on and off:
+
+- Located in `config/disable_lightning_render.json5` as `hideLightning`.
+- With [YACL](https://github.com/isXander/YetAnotherConfigLib) installed too, the config button in the mod list opens a config screen with a Hide Lightning toggle. 
+  - The Fabric version also needs [Mod Menu](https://github.com/TerraformersMC/ModMenu) to display the config in-game.
+
+## Versions
+
+| Minecraft        | Fabric | Forge | NeoForge    |
+|------------------|--------|-------|-------------|
+| 1.20 - 1.20.1    | Yes    | Yes   |             |
+| 1.20.2 - 1.20.4  | Yes    |       | 1.20.4 only |
+| 1.20.5 - 1.20.6  | Yes    |       | Yes         |
+| 1.21 - 1.21.1    | Yes    |       | Yes         |
+| 1.21.2 - 1.21.4  | Yes    |       | Yes         |
+| 1.21.5           | Yes    |       | Yes         |
+| 1.21.6 - 1.21.8  | Yes    |       | Yes         |
+| 1.21.9 - 1.21.10 | Yes    |       | Yes         |
+| 1.21.11          | Yes    |       | Yes         |
+| 26.1             | Yes    |       | Yes         |
+| 26.2             | Yes    |       | Yes         |
+| 26.3             | Yes    |       | Yes         |
+
+## Building
+
+Building needs JDK 25 and S-Lib in your mavenLocal, or set `slibLocal=false` in `gradle.properties` to pull from Modrinth's Maven. 
+
+If going the first route, publish S-Lib first with `./gradlew publishToMavenLocal` in the [S-Lib repository](https://github.com/Stalemated/s-lib).
+
+```bash
+./gradlew build
+```
+
+```bash
+./gradlew :1.21.1-neoforge:runClient
+```
+
+- Runs include S-Lib, YACL and Mod Menu (Fabric). `-PnoYacl` leaves out YACL and Mod Menu, and `-PnoSlib` leaves out S-Lib too, so you can test the mod on its own.
+
+## License
+
+[MIT](LICENSE)
