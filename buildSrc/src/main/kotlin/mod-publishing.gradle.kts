@@ -1,4 +1,5 @@
 import dev.kikugie.stonecutter.build.StonecutterBuildExtension
+import me.modmuss50.mpp.platforms.modrinth.ModrinthEnvironment
 import me.modmuss50.mpp.PublishModTask
 
 plugins {
@@ -14,6 +15,7 @@ val dryRunRequested = flag("publishDryRun")
 val loaderNames = mapOf("fabric" to "Fabric", "forge" to "Forge", "neoforge" to "NeoForge")
 val loaderOptionals = mapOf("fabric" to listOf("modmenu"))
 val curseforgeSides = mapOf("both" to (true to true), "client" to (true to false), "server" to (false to true))
+val modrinthEnvironments = enumValues<ModrinthEnvironment>().associateBy { it.name.lowercase() }
 val dryRunProjectIds = mapOf("publish.modrinth_id" to "dry-run", "publish.curseforge_id" to "0")
 
 fun tomlList(vararg path: String): List<String>? = sc.properties.rawOrNull(*path)?.asList()?.map { it.toString() }
@@ -54,9 +56,13 @@ publishMods {
     val loaderName = requireNotNull(loaderNames[loader]) {
         "loader must be one of ${loaderNames.keys.toList()}, got '$loader'"
     }
-    val environment = sc.properties.get<String>("mod.environment")
-    val (clientSide, serverSide) = requireNotNull(curseforgeSides[environment]) {
-        "mod.environment must be one of ${curseforgeSides.keys.toList()}, got '$environment'"
+    val modEnvironment = sc.properties.get<String>("mod.environment")
+    val (clientSide, serverSide) = requireNotNull(curseforgeSides[modEnvironment]) {
+        "mod.environment must be one of ${curseforgeSides.keys.toList()}, got '$modEnvironment'"
+    }
+    val modrinthEnvironmentName = sc.properties.get<String>("publish.modrinth_environment")
+    val modrinthEnvironment = requireNotNull(modrinthEnvironments[modrinthEnvironmentName]) {
+        "publish.modrinth_environment must be one of ${modrinthEnvironments.keys.toList()}, got '$modrinthEnvironmentName'"
     }
     val releaseTypes = mapOf("stable" to STABLE, "beta" to BETA, "alpha" to ALPHA)
     val releaseType = sc.properties.get<String>("publish.type")
@@ -85,6 +91,7 @@ publishMods {
     modrinth {
         projectId = projectId("publish.modrinth_id")
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        environment = modrinthEnvironment
         minecraftVersions.addAll(releasedVersions)
         requires(*requiredProjects.toTypedArray())
         optional(*optionalProjects.toTypedArray())
