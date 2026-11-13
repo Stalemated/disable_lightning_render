@@ -1,4 +1,5 @@
 import dev.kikugie.stonecutter.build.StonecutterBuildExtension
+import me.modmuss50.mpp.PublishModTask
 
 plugins {
     `maven-publish`
@@ -28,9 +29,16 @@ publishing {
     }
 }
 
+val publishedNodes = requiredTomlList("publish", "nodes")
+val unknownNodes = publishedNodes - rootProject.subprojects.map { it.name }.toSet()
+require(unknownNodes.isEmpty()) { "publish.nodes must only list existing nodes, got unknown $unknownNodes" }
+
+if (sc.current.project !in publishedNodes) {
+    tasks.withType<PublishModTask>().configureEach { enabled = false }
+}
+
 publishMods {
-    val node = sc.current.project
-    val minecraft = sc.current.version
+    val minecraft = sc.minecraftRange()
     val modVersion = sc.properties.get<String>("mod.version")
     val loaderName = requireNotNull(loaderNames[loader]) {
         "loader must be one of ${loaderNames.keys.toList()}, got '$loader'"
@@ -43,14 +51,11 @@ publishMods {
     val releaseType = sc.properties.get<String>("publish.type")
     val requiredProjects = requiredTomlList("publish", "requires")
     val optionalProjects = requiredTomlList("publish", "optional") + loaderOptionals[loader].orEmpty()
-    val mcReleases = tomlList("mod", "mc_releases")
+    val releasedVersions = sc.minecraftReleases()
     val modrinthId = sc.properties.get<String>("publish.modrinth_id")
     val curseforgeId = sc.properties.get<String>("publish.curseforge_id")
     val changelogFile = rootProject.file("Changelog.md")
     val javaVersion = providers.provider { the<JavaPluginExtension>().targetCompatibility }
-    val releasedVersions = providers.provider {
-        requireNotNull(mcReleases) { "mod.mc_releases is missing for node $node" }
-    }
 
     type = requireNotNull(releaseTypes[releaseType]) {
         "publish.type must be one of ${releaseTypes.keys.toList()}, got '$releaseType'"
