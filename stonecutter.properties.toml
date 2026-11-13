@@ -18,8 +18,8 @@ deps.log4j = "2.19.0"
 
 deps.slib = "4.0.0"
 
-publish.modrinth_id = ""
-publish.curseforge_id = ""
+publish.modrinth_id = "3UyF1FkJ"
+publish.curseforge_id = "1802027"
 publish.type = "stable"
 publish.requires = []
 publish.optional = ["s-lib", "yacl"]
