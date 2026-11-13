@@ -22,7 +22,7 @@ val fabricEnvironment = requireNotNull(fabricEnvironments[environment]) {
 }
 
 group = sc.properties.get<String>("mod.group")
-version = "$modVersion+${sc.minecraftRange()}"
+version = "$modVersion+${sc.minecraftLabel()}"
 base.archivesName = "${sc.properties.get<String>("mod.artifact")}-$loader"
 
 repositories {
