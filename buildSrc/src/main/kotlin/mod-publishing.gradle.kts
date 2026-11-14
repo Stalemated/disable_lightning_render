@@ -1,6 +1,7 @@
 import dev.kikugie.stonecutter.build.StonecutterBuildExtension
 import me.modmuss50.mpp.platforms.modrinth.ModrinthEnvironment
 import me.modmuss50.mpp.PublishModTask
+import kotlin.enums.enumEntries
 
 plugins {
     `maven-publish`
@@ -10,12 +11,12 @@ plugins {
 
 val sc = extensions.getByType<StonecutterBuildExtension>()
 val loader = sc.current.project.substringAfter('-')
-val dryRunRequested = flag("publishDryRun")
+val dryRunRequested = dryPublishRequested()
 
 val loaderNames = mapOf("fabric" to "Fabric", "forge" to "Forge", "neoforge" to "NeoForge")
 val loaderOptionals = mapOf("fabric" to listOf("modmenu"))
 val curseforgeSides = mapOf("both" to (true to true), "client" to (true to false), "server" to (false to true))
-val modrinthEnvironments = enumValues<ModrinthEnvironment>().associateBy { it.name.lowercase() }
+val modrinthEnvironments = enumEntries<ModrinthEnvironment>().associateBy { it.name.lowercase() }
 val dryRunProjectIds = mapOf("publish.modrinth_id" to "dry-run", "publish.curseforge_id" to "0")
 
 fun tomlList(vararg path: String): List<String>? = sc.properties.rawOrNull(*path)?.asList()?.map { it.toString() }
